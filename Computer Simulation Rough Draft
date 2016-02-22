@@ -1,0 +1,5 @@
+A computational simulation will be created in order to investigate the feasibility and compatibility of both modeling 
+convection in three dimensions and modeling convection in three dimensions via investigating convection in two dimensions. 
+This will be done using COMSOL, Python and possible Fortran for any numerical analysis that may be necessary. 
+The goal associated with the computational aspect of the project will be to successfully model convection in two dimensions 
+with the possibility of extending to three. 
