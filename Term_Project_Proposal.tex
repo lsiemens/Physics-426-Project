@@ -1,0 +1,138 @@
+%% LyX 2.1.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{float}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{hyperref}
+
+\makeatother
+
+\begin{document}
+
+\title{Physics 426: Term Project Proposal}
+
+
+\author{Luke Siemens \& Stephanie Monty}
+
+\maketitle
+
+\section{Introduction}
+
+Current models of Jupiter's atmosphere suggest the possibility of
+convection occurring deep within the planet's atmosphere. As early
+as 1977 Prinn \& Barshay suggest in their paper that the presence
+of convection within the atmosphere at 1100K would explain the appearance
+of carbon monoxide within the upper atmosphere, as observed in 1977
+(Beer \& Taylor, 1977). More recently with observations from the Galileo
+mission to Jupiter, convection was inferred from the direct observation
+of long lived storms on the planet, appearing as ``zonal jets''
+or ``long-lived ovals'' (Ingersoll et al. 630). The appearance and
+longevity of the storms suggests an energy source within the planet
+and the transfer of energy from said source to the atmosphere via
+a form of convection (Ingersoll et al, 2000). With convection being
+a probable process occurring within the atmosphere, an attempt to
+study and become more familiar with the mechanisms associated with
+convection in an Earth-based laboratory could yield important results.
+An experiment will be performed in order to observe and characterize
+convection cells on laboratory scales, after which the effects of
+rotation and the possible induction of turbulance may also be explored.
+The results of this ``table top'' convection experiment will then
+be discussed in an attempt to relate any findings to the larger scale
+of the Jovian atmosphere.
+
+
+\section{Experimental Set-Up}
+
+
+\section{Goals}
+
+This experiment will aim to observe, study and characterize convection
+within a laboratory setting. As mentioned in the above section, a
+convective cell will be generated within a cylindrical vessel and
+observed through the aid of high speed cameras, rheoscopic fliuds
+various dyes. In order to determine the required temperature difference
+between the bottom of the vessel and the top to induce convection,
+a mathematical study will be made investigating the Rayleigh-Benard
+Instability. This will be done using the definition of the dimensionless
+Rayleigh Number, noting that the density profile of the vessel will
+be treated as a free variable. Working from the definition of the
+Rayleigh number.
+
+\[
+R_{a}=\frac{g\beta}{\nu\alpha}(T_{b}-T_{u})L^{3}
+\]
+
+
+\[
+R_{a}=\frac{g\beta}{\mu k}c_{p}\rho^{2}(T_{b}-T_{u})L^{3}
+\]
+
+
+Noting above that all the variables excluding $T_{b}-T_{u}$ and $\rho$
+are fixed constants related to the thermal and viscous characteristics
+of the fluid to be used, while $L$ is the height of the vessel and
+$g$ is the acceleration due to gravity. The critical Rayleigh number,
+$R_{c}$, represents the value of the Rayleigh number, representing
+the ratio of gravitational to viscous forces, at which convection
+occurs in the system. For the solved case, in which the bottom boundary
+is rigid, while the top is free, the case of this experiment, the
+critical Rayleigh number is known. Thus, the temperature difference
+required to induce convection may then become only dependent on the
+density profile of the vessel. If the density if discrete, the temperate
+difference may be deduced for each layer of different density fluids,
+if the density profile is continuous the temperature difference required
+may be expressed in equation (2) where density becomes a function
+of height in the vessel. $\rho=\rho(L)$ (Bahrami, 2016).
+
+\begin{equation}
+(T_{b}-T_{u})=\left(\frac{\mu k}{g\beta}\right)\frac{R_{c}}{\rho^{2}L^{3}}
+\end{equation}
+
+
+\begin{equation}
+(T_{b}-T_{u})=\left(\frac{\mu k}{g\beta}\right)\frac{R_{c}}{\rho^{2}(L)L^{3}}
+\end{equation}
+
+
+The density profile of the vessel will be approximated as being both
+linear and discrete as both continuous and discrete density profiles
+will be investigated. In reality the more easy of the two to generate
+and model will be used in the final experiment to determine the required
+temperature difference as given in equations (1) or (2).
+
+A computational simulation will be created in order to investigate
+the feasibility and compatibility of both modeling convection in three
+dimensions and modeling convection in three dimensions via investigating
+convection in two dimensions. This will be done using COMSOL, Python
+and possible Fortran for any numerical analysis that may be necessary.
+The goal associated with the computational aspect of the project will
+be to successfully model convection in two dimensions with the possibility
+of extending to three. 
+
+Experimentally, the goal of the project will be to generate and observe
+convection cells. Once convection cells have been observed in a stationary
+reference frame, rotation will be introduced in an attempt to observe
+and record any perturbations to convection that might occur due to
+rotation. Any resultant turbulence that could could occur upon the
+introduction of rotation into a convective system will also be investigated.
+The effects of rotation will only be investigated upon the successful
+creation of convection within a stationary reference frame. 
+
+Utilizing the results from the mathematical, computational and experimental
+components of the project an overall result as to the possibility,
+or inference, of convection within Jupiter's atmosphere will be made.
+This will be done in part theoretically, through noting the temperature
+difference required in order to generate convection for fluids of
+a specific density, or density profile, and comparing this against
+the known density profile of the planets atmosphere. Experimentally,
+observing convection in the system could lead to inferring the existence
+of convection within Jupiter's atmosphere after considering comparable
+scale lengths and temperature differences between the two systems.
+If the appearance of convection is further supported through the appearance
+of convection computationally, via modeling, this will lead to further
+confidence in the final result.
+\end{document}
