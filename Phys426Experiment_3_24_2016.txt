@@ -1,0 +1,42 @@
+Rheoscopic fluid:
+    1 L water
+    ~ 1 gram fish scale
+    6 drops toner
+
+Room Temperature:
+    22.6 +- 0.1 C
+
+First experiment 400ml rheoscopic fluid
+time, T2(hotplate) +- 0.1 C, T1(fluid) +- 0.1C, Frame(s), setting(Hotplate)
+
+ t,    T2,   T1,   Frame(s),  Setting
+ 0:00, 25.2, 23.7, ----/----, low    
+ 1:30, 30.4, 24.0,      2777, low
+ 5:50, 38.2, 24.5, ----/----, low
+13:10, 44.8, 29.6, 2780/2779, low
+20:45, 58.5, 31.4,      2782,   2
+25.44, 64.9, 37.8, 2813/2815,   3
+
+Tfinal 45.4 +- 0.1. Frame 2816
+Time from stiring to return of convection ~13 s
+@ 26:00 felt was removed as smoke was observed.
+
+@Tfinal after the heat source was removed convection
+cells on the surface of the fluid were recorded, frame 2816
+
+
+
+Second experiment 400ml rheoscopic fluid, 100g granular sugar
+time, T2(hotplate) +- 0.1 C, T1(fluid) +- 0.1C, Frame(s), setting(Hotplate), Notes
+
+ t,     T2,   T1,   Frame(s),  Setting, Notes
+ 0:00,  32.5, 23.1, 2817/2818, low, No convection observed
+ 3:00,  41.3, 23.5, ----/----, low, None
+ 7:30,  45.1, 24.0, 2819/2820, low, bands formed
+10:00,  55.9, 24.3, 2821/2822,   2, ripple formed near edge
+16:30,  78.3, 28.9, 2825/2826,   2, clear bilayer bottom
+22:30,  88.8, 36.8, 2828/2833,   2, sugar beginning to form more diffuse boundy layer: convection definitely damped in system: still same bilayer with obvious sugar bottom and sugar watter upper
+30:00,  96.2, 44.8, 2854/2838,   2, bubles observed at bottom not breaking through the boundry betwean sugar and convection zone
+37:00, 100.0, 51.2, 2839/2841,   2, sugar layer starting to fail, mostly dissolved, turbulence ocerwhelming convection
+
+
