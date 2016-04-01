@@ -13,13 +13,14 @@ def radial_profile(data, center):
     return value_bin/num_bin
 
 class radial_fft:
-    def __init__(self, fname, x, y, r, r_scale=1.0, r_ramp=5):
+    def __init__(self, fname, x, y, r, r_clip=1.0, r_ramp=5, r_size=1.0):
         self.fname = fname
         self.x = x
         self.y = y
         self.r = r
-        self.r_scale = r_scale
-        self.r_ramp = r_ramp
+        self.r_clip = r_clip #cliping radii
+        self.r_ramp = r_ramp #ramp from background to mask
+        self.r_size = r_size #radii size
         self.raw_data = imread(fname)
         self.data = None
         self._interpolate_fft = None
@@ -31,7 +32,7 @@ class radial_fft:
 
     def _mask_data(self):
         #scale r (remove error on side)
-        r = int(self.r_scale*self.r)
+        r = int(self.r_clip*self.r)
         X, Y = numpy.meshgrid(numpy.linspace(0, self.raw_data.shape[1], self.raw_data.shape[1]), numpy.linspace(0, self.raw_data.shape[0], self.raw_data.shape[0]))
         #define mask
         mask = 1.0 - 0.5*(numpy.tanh((numpy.sqrt((X - self.x)**2 + (Y - self.y)**2) - r)/self.r_ramp) + 1.0)
@@ -47,13 +48,12 @@ class radial_fft:
         self.data = luminance
         
     def _fft(self):
-        r = int(self.r_scale*self.r)
+        r = int(self.r_clip*self.r)
         fft = fftpack.fft2(self.data)
         fft = fftpack.fftshift(fft)
         
-        self.f_sampling = self.data.shape[0]/1.0
-        self.f_max = self.f_sampling/2.0
-        self.f_min = 1.0/1.0
+        self.f_max = 2.0*self.r/(4.0*self.r_size)
+        self.f_min = 1.0/(2.0*self.r_size)
         
         powerspec = numpy.abs(fft)**2
         self.data_powerspectrum = radial_profile(numpy.log10(powerspec), (powerspec.shape[0]/2, powerspec.shape[0]/2))

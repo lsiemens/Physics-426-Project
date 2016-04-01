@@ -4,7 +4,7 @@ from scipy import fftpack
 from radial_fft import radial_fft
 import numpy
 
-r_scale = 1.0
+r_clip = 0.9
 
 image_data = [("./data/CIMG2782.JPG", 1851, 1436, 1138, "r-", "heated water"),
               ("./data/CIMG2813.JPG", 1865, 1458, 881, "r-", None),
@@ -22,12 +22,12 @@ image_data = [("./data/CIMG2782.JPG", 1851, 1436, 1138, "r-", "heated water"),
 fig1, ax1 = pyplot.subplots()
 fig2, ax2 = pyplot.subplots()
 
-base = radial_fft("./data/CIMG2817.JPG", 1841, 1349, 1317, r_scale=r_scale)
+base = radial_fft("./data/CIMG2817.JPG", 1841, 1349, 1317, r_clip=r_clip)
 
 
 for i, (fname, x, y, r, style, label) in enumerate(image_data):
     print("loaded " + str(i + 1) + " of " + str(len(image_data)) + ".")
-    d = radial_fft(fname, x, y, r, r_scale=r_scale)
+    d = radial_fft(fname, x, y, r, r_clip=r_clip)
     ax1.plot(d.x, d.data_powerspectrum, style, label=label)
     ax2.plot(1.0/d.x, d.data_powerspectrum/base.interpolate(d.x), style, label=label)
 ax1.legend()
