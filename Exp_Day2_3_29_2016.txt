@@ -1,0 +1,82 @@
+Rheoscopic Fluid:
+	1 L of water
+	~2 g of fish scales
+	6 drops toner
+	
+--------------------------------------------------	
+First Experiment 400ml Rheoscopic Fluid (NO SUGAR)
+
+NOTE:	Probe for T2 touching glass throughout (hence high temp. readings)
+--------------------------------------------------
+Frame,	Time,	Heat Setting,	Rotation(RPM),	T1(fluid)+/-0.2C,	T2(hotplate)+/-0.2C,	Comment
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+2859	0	Lo		0		23.4			33.9			Convection was observed in static frame of reference.
+
+2865	2m	Lo		10		26.0			49.3			Ring was observed and disappeared quickly.
+
+2866-69	5m	Lo		10		27.6			52.8			Small convection cells and vortices obs. on surface. Convect. obs on sides.
+
+2873	8m	Lo		10		29.3			59.8			Curled vortices and motion still apparent on surface.
+
+2901-03	18m	2		13		42.5			108.9			Changed to "High Speed 9" camera setting. Turned lights on.
+												Increased temp. and rot. gradually.
+												Cells appear smaller, after brief period of rotation (~30s) convection on sides ceased and cells on surface collapsed.
+												Convection returned quickly on the sides, following collapsed.
+												
+2904-09	22m	2		13		48.5			120.4			Cells still small, convect. appears turbulant on sides.
+												Cells on top all appear like vortices, Rayleigh-Taylor-type instabilities.
+						
+2910-12	25:30m	2		18		53.4			123.8			Steam appears on edges of glass.
+
+2913-18	29m	2		26		58.0			125.0			Very turbulant, convection still apparent on sides, but not surface.
+												Cells on surface VERY small and turbulant.
+												Took flat image.
+												
+--------------------------------------------------	
+Second Experiment 400ml Rheoscopic Fluid, 100g SUGAR
+
+NOTE: 	Set aside container of 200ml of solution and 50g of sugar to investigate possibility of stratification being an optical illusion.
+	After 20m stratificiation appears to be real.
+
+--------------------------------------------------
+Frame,	Time,	Heat Setting,	Rotation(RPM),	T1(fluid)+/-0.2C,	T2(hotplate)+/-0.2C,	Comment
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+2927-34	0	0		0		23.4			26.2			Fluid slightly stratified, possibly an optical illusion.
+												Moved previous images to Luke's computer.
+												Took flat image.
+												
+2935-43	3m	Lo		10		23.1			48.5			Stratification is real.
+												Turbulant surface, smooth bottem layers.
+												
+2944-50	8-10m	Lo		10		23.4			66.0			Surface starting to show turbulance.
+												Sides starting to resemble Jupiter.
+												
+2951-57	12-15m	2		13		24.2			86.4			Thin, dark band appears half-way through container.
+												Top is beginning to resemble non-sugar case, small convection cells.
+												
+2958-61	20m	2		13		31.1			128.0			Convection appears similar to non-sugar case above the sugar layer.
+												Top similar to non-sugar case, small vortices.
+
+2962-67	25m	2		13		40.7			90.0			Tiny vortices on top layer.
+												Bottem stratification layer moving further up the vessel.
+												
+2968-78	32m	2		18		45.0			82.0			Top-layer looks A LOT like non-sugar case.
+												Tiny vortices still obs.
+												Starting to resemble static sugar case.
+												Boiling obs. in bottem layer as bubbles.
+												Steam and bubble rings obs.
+												
+2968-78	35-40m	2		26		51.0			72.0			Thick, dark band obs. in same spot as original.
+												Thin, dark band obs. below dark band. Could be from fluid tucking under bottem of conv. layer.
+												Boiling very apparent and strong in bottem layers.
+												
+2979-86	43m	2		26		53.3			74.7			Visible holes in sugar, bottem layer.
+												Bottem layer clear of fish scales.
+												Stratified into 2 conv. layers.
+												Large vortex on surface and at glass side.
+												
+2987-97	47-55m	2		26		52.5			50.1			Fluid split into 2 distinct bands above the sugar saturated layer.
+												Lower, thicker bands are smooth when bubbles from the bottem layer are not passing through.
+												Top layer is convecting.
+												
+
