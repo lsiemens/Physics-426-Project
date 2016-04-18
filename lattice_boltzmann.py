@@ -112,6 +112,21 @@ class LBM:
         self.initalize()
     
     # methods to compute spectrum distributions
+    def find_Moment0(self):
+        return numpy.sum(self.state_space, axis=2)
+    
+    def find_Moment1x(self):
+        return numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2)
+    
+    def find_Moment1y(self):
+        return numpy.sum(self.state_space*(-self.dv*self.vxhat).T.flatten(), axis=2)
+    
+    def find_Moment1(self):
+        return numpy.sqrt(self.find_Moment1x()**2 + self.find_Moment1y()**2)
+    
+    def find_Moment2(self):
+        return numpy.sum(self.state_space*self.dv**2*(self.vxhat**2 + self.vxhat.T**2).flatten(), axis=2)
+    
     def find_A(self, Moment0, Moment2):
         return self.a_0*Moment2 + self.a_1*Moment0
     
@@ -132,45 +147,55 @@ class LBM:
         pyplot.imshow(data.T, interpolation=self.interpolation, cmap=self.colorbar, vmin=vmin, vmax=vmax)
         pyplot.colorbar()
         
-    def plot_moment_0(self, diff=None):
+    def plot_moment_0(self, diff=None, show=True):
         if diff != None:
            self._plot_2d(numpy.sum(self.state_space-diff, axis=2), 0.0)
         else:
-           self._plot_2d(numpy.sum(self.state_space, axis=2), 0.0)
-        pyplot.title("Zeroeth Moment")
-        pyplot.show()
+#           self._plot_2d(numpy.sum(self.state_space, axis=2), 0.0)
+           self._plot_2d(self.find_Moment0(), 0.0)
+        if show:
+            pyplot.title("Zeroeth Moment")
+            pyplot.show()
         
-    def plot_moment_1_x(self):
-        self._plot_2d(numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2))
-        pyplot.title("First Moment X")
-        pyplot.show()
+    def plot_moment_1_x(self, show=True):
+#        self._plot_2d(numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2))
+        self._plot_2d(self.find_Moment1x())
+        if show:
+            pyplot.title("First Moment X")
+            pyplot.show()
         
-    def plot_moment_1_y(self):
-        self._plot_2d(numpy.sum(self.state_space*(-self.dv*self.vxhat).T.flatten(), axis=2))
-        pyplot.title("First Moment Y")
-        pyplot.show()
+    def plot_moment_1_y(self, show=True):
+#        self._plot_2d(numpy.sum(self.state_space*(-self.dv*self.vxhat).T.flatten(), axis=2))
+        self._plot_2d(self.find_Moment1y())
+        if show:
+            pyplot.title("First Moment Y")
+            pyplot.show()
 
-    def plot_moment_1(self, norm=False):
+    def plot_moment_1(self, norm=False, show=True):
         if norm:
             self._plot_2d(numpy.sqrt(numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2)**2 + numpy.sum(self.state_space*(-self.dv*self.vxhat.T).flatten(), axis=2)**2)/numpy.sum(self.state_space, axis=2))
         else:
             self._plot_2d(numpy.sqrt(numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2)**2 + numpy.sum(self.state_space*(-self.dv*self.vxhat.T).flatten(), axis=2)**2))
-        pyplot.title("First Moment")
-        pyplot.show()
+        if show:
+            pyplot.title("First Moment")
+            pyplot.show()
         
-    def plot_moment_2(self):
-        self._plot_2d(numpy.sum(self.state_space*self.dv**2*(self.vxhat**2 + self.vxhat.T**2).flatten(), axis=2), 0.0)
-        pyplot.title("Second Moment")
-        pyplot.show()
+    def plot_moment_2(self, show=True):
+#        self._plot_2d(numpy.sum(self.state_space*self.dv**2*(self.vxhat**2 + self.vxhat.T**2).flatten(), axis=2), 0.0)
+        self._plot_2d(self.find_Moment2(), 0.0)
+        if show:
+            pyplot.title("Second Moment")
+            pyplot.show()
     
-    def plot_vorticity(self):
+    def plot_vorticity(self, show=True):
         x_speed = numpy.sum(self.state_space*(self.dv*self.vxhat).flatten(), axis=2)
         x_speed = (x_speed[:-1, 1:] - x_speed[:-1, :-1])/self.dx
         y_speed = numpy.sum(self.state_space*(self.dv*self.vxhat).T.flatten(), axis=2)
         y_speed = (y_speed[1:, :-1] - y_speed[:-1, :-1])/self.dx
         self._plot_2d(y_speed - x_speed)
-        pyplot.title("Vorticity")
-        pyplot.show()
+        if show:
+            pyplot.title("Vorticity")
+            pyplot.show()
     
     # boundry initalization and handeling
     def initalize(self):
@@ -285,125 +310,16 @@ class LBM:
             return A*(1.0 - self.m*(vx*(self.dv*self.vxhat).flatten() + vy*(self.dv*self.vxhat.T).flatten())/(self.k*self.t_0) + self.m*t*(((self.dv*self.vxhat).flatten())**2 + ((self.dv*self.vxhat.T).flatten())**2)/(2*self.k*self.t_0**2))*self._distribution_static
     
     def mixing(self):
-        M0 = numpy.sum(self.state_space, axis=2)
-        M1x = numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2)
-        M1y = numpy.sum(self.state_space*(-self.dv*self.vxhat).T.flatten(), axis=2)
-        M2 = numpy.sum(self.state_space*self.dv**2*(self.vxhat**2 + self.vxhat.T**2).flatten(), axis=2)
+#        M0 = numpy.sum(self.state_space, axis=2)
+#        M1x = numpy.sum(self.state_space*(-self.dv*self.vxhat).flatten(), axis=2)
+#        M1y = numpy.sum(self.state_space*(-self.dv*self.vxhat).T.flatten(), axis=2)
+#        M2 = numpy.sum(self.state_space*self.dv**2*(self.vxhat**2 + self.vxhat.T**2).flatten(), axis=2)
+        M0 = self.find_Moment0()
+        M1x = self.find_Moment1x()
+        M1y = self.find_Moment1y()
+        M2 = self.find_Moment2()
         A = self.find_A(M0, M2)
         vx = self.find_vx(M0, M1x, M2)
         vy = self.find_vy(M0, M1y, M2) - 0.001
         t = self.find_t(M0, M2)
         self.state_space = self.state_space + self.mixing_rate*(self.linearized_distribution(A, vx, vy, t) - self.state_space)
-    
-size = 100
-state = LBM(size, 0.8)
-state.boundry_stp[:, 0] = True
-state.boundry_slip[:, -1] = True
-
-density = 5.0
-t = 10.0
-vx = 0.0
-vy = 0.0
-R2 = state.space_ones
-r = 3
-state.state_space[:, :] = state.linearized_distribution(1.0*R2, 0.0*R2, 0.0*R2, 0.0*R2)#*(state.space_ones*numpy.linspace(25, 55, size)[:, numpy.newaxis]).T[:, :, numpy.newaxis]
-#state.state_space[int(size/2)-5, int(size/2)-3] = state.linearized_distribution(density, vx, vy, t)
-#state.state_space[int(size/2)+3, 0] = state.linearized_distribution(density, vx, vy, t)
-#state.state_space[int(size/2)-r-20:int(size/2)+r-20, int(size/2)-r-20:int(size/2)+r-20] = state.linearized_distribution(density, vx, vy, t)
-#state.plot_moment_0()
-state.set_stp_distribution(0.5)
-state.initalize()
-
-"""state._plot_2d(state.boundry)
-pyplot.title("boundry")
-pyplot.show()
-state._plot_2d(state.boundry_slip)
-pyplot.title("boundry slip")
-pyplot.show()
-state._plot_2d(state.boundry_stp)
-pyplot.title("boundry STP")
-pyplot.show()
-state._plot_2d(state.boundry_periodic)
-pyplot.title("boundry periodic")
-pyplot.show()
-
-stuf1 = []
-stuf2 = []
-state.plot_moment_0()
-state.plot_moment_1()
-for i in range(100):
-    for j in range(10000):
-        if j%200 == 0:
-            print(j)
-        state.diffusion()
-        state.mixing()
-        b = numpy.sum(state.state_space, axis=0)
-        stuf1.append(b[0, 0] + b[0, 1] + b[0, 2])
-        stuf2.append(b[0, 6] + b[0, 7] + b[0, 8])
-
-    state.plot_moment_0()
-#    state.plot_moment_1_x()
-#    state.plot_moment_1_y()
-    state.plot_moment_1()
-    pyplot.plot(numpy.sum(state.state_space, axis=2)[0, :])
-    pyplot.show()
-    pyplot.plot(stuf1)
-    pyplot.plot(stuf2)
-    pyplot.show()
-#    state.plot_moment_2()
-    print("saving data")
-    state.save("HSE_atmosphere.dump")
-    print("data saved")"""
-
-
-state.load("HSE_atmosphere.dump")
-
-space = state.state_space
-
-density = 1.0
-t = 50.0
-th = 5
-heating_range1 = (slice(None, None), slice(-th, None))
-heating_range2 = (slice(int(size/4), -int(size/4)), slice(-th, None))
-
-def heating(self, heating_range, tf=1.04):
-    M0 = numpy.sum(self.state_space[heating_range], axis=2)
-    M1x = numpy.sum(self.state_space[heating_range]*(-self.dv*self.vxhat).flatten(), axis=2)
-    M1y = numpy.sum(self.state_space[heating_range]*(-self.dv*self.vxhat).T.flatten(), axis=2)
-    M2 = numpy.sum(self.state_space[heating_range]*self.dv**2*(self.vxhat**2 + self.vxhat.T**2).flatten(), axis=2)
-    A = self.find_A(M0, M2)
-    vx = self.find_vx(M0, M1x, M2)
-    vy = self.find_vy(M0, M1y, M2)
-    t = tf*self.find_t(M0, M2)
-    self.state_space[heating_range] = self.state_space[heating_range] + self.mixing_rate*(self.linearized_distribution(A, vx, vy, t) - self.state_space[heating_range])
-
-for j in range(2000):
-    state.diffusion()
-    state.mixing()
-    heating(state, heating_range1)
-    heating(state, heating_range2, 1.03)
-#    state.state_space[:, -th:] = state.linearized_distribution(density, vx, vy, t1)
-#    state.state_space[int(size/4):-int(size/4), -th:] = state.linearized_distribution(density, vx, vy, t2)
-state.plot_moment_0(space)
-state.plot_moment_1()
-#state.plot_moment_2()
-state.plot_vorticity()
-
-for i in range(100):
-    for j in range(10):
-        state.diffusion()
-        state.mixing()
-#        heating(state, heating_range)
-        heating(state, heating_range1)
-        heating(state, heating_range2, 1.03)
-#        state.state_space[:, -th:] = state.linearized_distribution(density, vx, vy, t1)
-#        state.state_space[int(size/4):-int(size/4), -th:] = state.linearized_distribution(density, vx, vy, t2)
-
-    state.plot_moment_0(space)
-#    state.plot_moment_1_x()
-#    state.plot_moment_1_y()
-    state.plot_moment_1()
-#    state.plot_moment_2()
-    state.plot_vorticity()
-
-
