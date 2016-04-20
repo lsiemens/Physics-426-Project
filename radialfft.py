@@ -13,15 +13,20 @@ def radial_profile(data, center):
     return value_bin/num_bin
 
 class radial_fft:
-    def __init__(self, fname, x, y, r, r_clip=1.0, r_ramp=5, r_size=1.0):
-        self.fname = fname
+    def __init__(self, fname, x, y, r, r_clip=1.0, r_ramp=5, r_size=1.0, max_input=255.0):
         self.x = x
         self.y = y
         self.r = r
         self.r_clip = r_clip #cliping radii
         self.r_ramp = r_ramp #ramp from background to mask
         self.r_size = r_size #radii size
-        self.raw_data = imread(fname)
+        self.max_input = max_input
+        if isinstance(fname, str):
+            self.fname = fname
+            self.raw_data = imread(fname)
+        else:
+            self.fname = None
+            self.raw_data = fname
         self.data = None
         self._interpolate_fft = None
         
@@ -37,7 +42,13 @@ class radial_fft:
         #define mask
         mask = 1.0 - 0.5*(numpy.tanh((numpy.sqrt((X - self.x)**2 + (Y - self.y)**2) - r)/self.r_ramp) + 1.0)
         #find luminance
-        luminance = numpy.sum((self.raw_data[:, :]/255.0)**2, axis=2)/3.0
+        if self.fname != None:
+            luminance = numpy.sum((self.raw_data[:, :]/self.max_input)**2, axis=2)/3.0
+        else:
+            if len(self.raw_data.shape) > 2:
+                luminance = numpy.sum((self.raw_data[:, :]/self.max_input)**2, axis=2)/3.0
+            else:
+                luminance = numpy.abs(self.raw_data[:, :]/self.max_input)
         #mask data
         luminance = luminance*mask
         #normalze
@@ -65,4 +76,16 @@ class radial_fft:
     def interpolate(self, x):
         return self._interpolate_fft(x)
 
-#d = radial_fft("./data/CIMG2817.JPG", 1841, 1349, 1317)        
+""" 
+d = radial_fft("./data/CIMG2817.JPG", 1841, 1349, 1317)
+import voronoi
+import random
+random.seed()
+bw = voronoi.bowyer_watson(2.0)
+for _ in range(10):
+    bw.add_point(voronoi.vec(random.uniform(-1, 1), random.uniform(-1, 1)))
+v = bw.get_voronoi(2000)
+v.gaussian(0.04, 0.1)
+data = 1.0 - 0.1*v.raster
+d = radial_fft(data, 1000, 1000, 990, max_input=1.0)
+"""

@@ -413,7 +413,6 @@ class voronoi:
 
         efall_px = (width/2.)*self.resolution/(self.limit[1] - self.limit[0])
         range_px = int((bounds/2.)*self.resolution/(self.limit[1] - self.limit[0]))
-        print(range_px, bounds, self.resolution, self.limit)
         if range_px < 1:
             raise ValueError("range is too small, filter must be larger than 2x2")
         if efall_px > range_px:
@@ -444,7 +443,7 @@ class voronoi:
         for line in self.lines:
             line.plot(axis)
 
-#"""
+""" 
 import random
 random.seed(0)
 r = 2.0
@@ -462,4 +461,4 @@ v.gaussian(0.04, 0.10)
 #v.plot_raster()
 #pyplot.show()
 print(v.mean_distance(400))
-#"""
+"""

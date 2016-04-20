@@ -1,7 +1,7 @@
 from matplotlib import pyplot
 from scipy.ndimage import imread
 from scipy import fftpack
-from radial_fft import radial_fft
+from radialfft import radial_fft
 import numpy
 
 r_clip = 0.85

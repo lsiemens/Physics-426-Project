@@ -8,6 +8,10 @@
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{hyperref}
+\usepackage[title, titletoc, toc, page]{appendix}
+\usepackage{listings}
+
+\newcommand{\rawcode}[2]{\subsection*{#2 #1}\label{code:#1}\lstinputlisting[language=Python, breaklines=true, showstringspaces=false]{#1}\vspace{1cm}}
 
 \makeatother
 
@@ -20,6 +24,12 @@ Conditions and the Possible Implications to the Jovian Atmosphere}
 \author{Luke Siemens \& Stephanie Monty}
 
 \maketitle
+
+\begin{abstract}
+Finish writing after results determiend
+\end{abstract}
+
+%\tableofcontents
 
 \section{Introduction}
 
@@ -168,6 +178,11 @@ If the appearance of convection is further supported through the appearance
 of convection computationally, via modeling, this will lead to further
 confidence in the final result.
 
+\subsection{}
+
+\section{Analysis}
+
+\section{Conclusions}
 
 \section{References}
 \begin{enumerate}
@@ -181,5 +196,13 @@ the large-scale motions in Jupiter's atmosphere.'' \textit{Nature}
 \item Prinn, R.G., Barshay, S.S. ``Carbon Monoxide on Jupiter and Implications
 for Atmospheric Convection.'' \textit{AAAS} 198.4321 (1977): 1031-1034.
 Print\end{enumerate}
+
+\begin{appendices}
+\section{Code} \label{app:Code}
+\rawcode{processdata.py}{Script:}
+\rawcode{radialfft.py}{Module:}
+\rawcode{voronoi.py}{Module:}
+
+\end{appendices}
 
 \end{document}
