@@ -413,6 +413,7 @@ class voronoi:
 
         efall_px = (width/2.)*self.resolution/(self.limit[1] - self.limit[0])
         range_px = int((bounds/2.)*self.resolution/(self.limit[1] - self.limit[0]))
+        print(range_px, bounds, self.resolution, self.limit)
         if range_px < 1:
             raise ValueError("range is too small, filter must be larger than 2x2")
         if efall_px > range_px:
@@ -420,12 +421,10 @@ class voronoi:
         if range_px > self.resolution*self.filter_max/2.:
             raise ValueError("filter bounds larger than " + str(self.filter_max) + " * resolution.")
         
-
         X, Y = numpy.meshgrid(numpy.linspace(-range_px, range_px, 2*range_px + 1), numpy.linspace(-range_px, range_px, 2*range_px + 1))
-        
         filter = numpy.exp(-(X**2 + Y**2)/(2.0*efall_px**2))
         filter = filter/numpy.sum(filter)
-        self.raster = scipy.ndimage.filters.convolve(self.raster, filter)
+        self.raster = scipy.ndimage.filters.gaussian_filter(self.raster, efall_px, truncate=range_px/efall_px)
         self.raster[self.raster > numpy.sum(filter[int(len(filter)/2)])] = numpy.sum(filter[int(len(filter)/2)])
         self.raster = self.raster/numpy.max(self.raster)
 
@@ -445,22 +444,22 @@ class voronoi:
         for line in self.lines:
             line.plot(axis)
 
-""" 
+#"""
 import random
-random.seed()
+random.seed(0)
 r = 2.0
 bw=bowyer_watson(r)
 for _ in range(10):
     bw.add_point(vec(random.uniform(-r/2, r/2), random.uniform(-r/2, r/2)))
 
-bw.plot()
-pyplot.show()
-v = bw.get_voronoi(1000)
-bw.plot(setup_only = True)
-v.plot_vector()
-pyplot.show()
+#bw.plot()
+#pyplot.show()
+v = bw.get_voronoi(2000)
+#bw.plot(setup_only = True)
+#v.plot_vector()
+#pyplot.show()
 v.gaussian(0.04, 0.10)
-v.plot_raster()
-pyplot.show()
+#v.plot_raster()
+#pyplot.show()
 print(v.mean_distance(400))
-"""
+#"""
