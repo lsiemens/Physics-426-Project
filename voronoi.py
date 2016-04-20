@@ -233,15 +233,18 @@ class voronoi:
         self.lines = lines
         self.limit = limit
         self.resolution = resolution
+        self.raster = None
+        self.regions = None
+        self.neighbors = {}
+        self.max_id = 0
+        self.filter_max = 0.2
+
+    def rasterize(self):
         self.raster = numpy.zeros((self.resolution, self.resolution))
         self.regions = numpy.zeros((self.resolution, self.resolution), dtype=int)
         self.neighbors = {}
         self.max_id = 0
 
-        self.rasterize()
-        self.find_regions()
-    
-    def rasterize(self):
         for line in self.lines:
             self.bresenham_line(self.map_line(line))
             
@@ -306,7 +309,12 @@ class voronoi:
         self.max_id = region_id
         return boundry, region_id + 1
         
-    def mean_distance(self):
+    def mean_distance(self, resolution=None):
+        if resolution != None:
+            self.resolution = resolution
+        self.rasterize()
+        self.find_regions()
+    
         centroids = []
         for i in range(1, self.max_id + 1):
             temp = numpy.zeros((self.resolution, self.resolution), dtype=int)
@@ -398,11 +406,19 @@ class voronoi:
                 return self.raster[x, y] == 0
             return True
             
-    def gaussian(self, width, bounds):
+    def gaussian(self, width, bounds, resolution=None):
+        if resolution != None:
+            self.resolution = resolution
+        self.rasterize()
+
         efall_px = (width/2.)*self.resolution/(self.limit[1] - self.limit[0])
         range_px = int((bounds/2.)*self.resolution/(self.limit[1] - self.limit[0]))
         if range_px < 1:
             raise ValueError("range is too small, filter must be larger than 2x2")
+        if efall_px > range_px:
+            raise ValueError("gausian width larger than filter bounds")
+        if range_px > self.resolution*self.filter_max/2.:
+            raise ValueError("filter bounds larger than " + str(self.filter_max) + " * resolution.")
         
 
         X, Y = numpy.meshgrid(numpy.linspace(-range_px, range_px, 2*range_px + 1), numpy.linspace(-range_px, range_px, 2*range_px + 1))
@@ -429,22 +445,22 @@ class voronoi:
         for line in self.lines:
             line.plot(axis)
 
+""" 
 import random
 random.seed()
-r = 100.0
+r = 2.0
 bw=bowyer_watson(r)
 for _ in range(10):
     bw.add_point(vec(random.uniform(-r/2, r/2), random.uniform(-r/2, r/2)))
 
-#bw.plot()
-#pyplot.show()
-v = bw.get_voronoi(100)
-#bw.plot(setup_only = True)
-#v.plot_vector()
-#pyplot.show()
+bw.plot()
+pyplot.show()
+v = bw.get_voronoi(1000)
+bw.plot(setup_only = True)
+v.plot_vector()
+pyplot.show()
+v.gaussian(0.04, 0.10)
 v.plot_raster()
 pyplot.show()
-v.gaussian(4, 10)
-v.plot_raster()
-pyplot.show()
-print(v.mean_distance())
+print(v.mean_distance(400))
+"""
