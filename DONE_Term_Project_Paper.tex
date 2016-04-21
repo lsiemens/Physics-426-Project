@@ -62,7 +62,7 @@ incoming solar radiation to the outgoing reradiated solar energy,
 while the effective temperature may be found through fitting a black
 body spectrum to the integrated flux over all frequencies coming from
 the body (Lissauer \& de Pater, 2013). The effective temperature for
-Jupiter was measured by the Voyager spacecraft to be $T_{eff}=124.4$K
+Jupiter was measured by the Voyager spacecraft to be $T_{eff}=124.4$ K
 (Hamel et al., 1981), while the equilibrium temperature can be calculated
 to be $T_{eq}=110$K (Mihos, 2005). This discrepency in predicted
 and measured temperature alludes to the presence of an internal heat
@@ -122,14 +122,14 @@ The critical Rayleigh number, $R_{c}$, represents the value of the
 Rayleigh number, representing the ratio of gravitational to viscous
 forces, at which convection occurs in the system. For the solved case,
 in which the bottom boundary is rigid, while the top is free, the
-case of this experiment, the critical Rayleigh number is \$Ra\_\{c\}=1101\$
+case of this experiment, the critical Rayleigh number is $Ra_{c}=1101$
 (Kundu et al.,2012). If a characteristic fluid is chosen such that
 all the parameters listed above are fixed, except for the temperature
 difference across the fluid, Ra may be deduced on various timescales.
 Though, the effect of rotation is not explicitly stated in the calculation
 of the Rayleigh number, if one infers the introduction of turbulence
 via rotation, and the effect of organization of the fluid flow upon
-reaching \$Ra\_\{c\}\$, one can imagine that perhaps convection occurs
+reaching $Ra_{c}$, one can imagine that perhaps convection occurs
 at higher Ra in the rotating case, than the non-rotating case. Thus,
 if the temperature difference across the fluid is measured at various
 times, the evolution of the Ra number may be studied and information
@@ -197,6 +197,10 @@ $\beta$ coefficient of thermal expansion & $2.1\times10^{-4}K^{-1}$\tabularnewli
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Convection Cell Size}
+The characteristic size of convection cells was found using both direct mesurement and comparison to numerical models. In the case where the fluid was suffiently stable the mean size of convections cells was measured directly. In addition to direct mesurement of the convection cell size, the cell size was also determined by fitting the radial Fourier transform of a model of the fluid surface to the observed radial Fourier transform. To find the radial Fourier transform we first used a circular mask to remove the background and normalized the image. Then the 2D Discrete Fast Fourier transform of the image was found and the radial average was computed. This procedure for computing the radial Fourier transform was implimented in the python module \ref{code:radialfft.py}.
+
 
 
 
@@ -313,7 +317,7 @@ Regimes}
 of the Vessel)}
 
 
-\includegraphics[scale=0.5]{\string"Cell_Numbers\string".png}
+%\includegraphics[scale=0.5]{\string"Cell_Numbers\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -388,7 +392,7 @@ ADD HERE FOURIER STUFF
 
 A study into simulating the experiment was also made via COMSOL. This
 was done using a 2D time-dependent fluid convection model. Water was
-chosen as the fluid and a heat flux of $3500W/m^{2}$was applied to
+chosen as the fluid and a heat flux of $3500W/m^{2}$ was applied to
 one of the boundaries. The simulation was completed using a fine mesh,
 over 30 minutes, using intervals of 2 minutes. The resultant plot
 of temperature of both the top and bottem of the fluid may be seen
