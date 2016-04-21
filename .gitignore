@@ -6,4 +6,4 @@
 .ipynb_checkpoints/*
 data
 data/*
-*.dump
+#*.dump

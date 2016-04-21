@@ -20,6 +20,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{hyperref}
+\usepackage[title, titletoc, toc, page]{appendix}
+\usepackage{listings}
+
+\newcommand{\rawcode}[2]{\subsection*{#2 #1}\label{code:#1}\lstinputlisting[language=Python, breaklines=true, showstringspaces=false]{#1}\vspace{1cm}}
 
 \@ifundefined{showcaptionsetup}{}{%
  \PassOptionsToPackage{caption=false}{subfig}}
@@ -204,9 +208,9 @@ $\beta$ coefficient of thermal expansion & $2.1\times10^{-4}K^{-1}$\tabularnewli
 
 \subfloat[Rotational Convection]{
 
-\includegraphics[scale=0.5]{\string"Final Project/Rotational_Convection\string".eps}
+\includegraphics[scale=0.5]{\string"Rotational_Convection\string".JPG}
 
-}\subfloat[Static Convection]{\includegraphics[scale=0.5]{\string"Final Project/Static_Convection\string".eps}
+}\subfloat[Static Convection]{\includegraphics[scale=0.5]{\string"Static_Convection\string".JPG}
 
 }
 \end{figure}
@@ -238,7 +242,7 @@ Rotating, Sugar & $8.13\times10^{6}$ & $5.48\times10^{7}$\tabularnewline
 \protect\caption{Rayleigh Evolution: Static Case}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Rayleigh\string".eps}
+\includegraphics[scale=0.5]{\string"Static_Rayleigh\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -247,7 +251,7 @@ Rotating, Sugar & $8.13\times10^{6}$ & $5.48\times10^{7}$\tabularnewline
 \protect\caption{Rayleigh Evolution: Static Case Highlighted Turbulent Regime}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Rayleigh_Regime\string".eps}
+\includegraphics[scale=0.5]{\string"Static_Rayleigh_Regime\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -256,7 +260,7 @@ Rotating, Sugar & $8.13\times10^{6}$ & $5.48\times10^{7}$\tabularnewline
 \protect\caption{Rayleigh Evolution: Rotating Case}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Rayleigh\string".eps}
+\includegraphics[scale=0.5]{\string"Rotating_Rayleigh\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -264,7 +268,7 @@ Rotating, Sugar & $8.13\times10^{6}$ & $5.48\times10^{7}$\tabularnewline
 Regimes}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Rayleigh_Regimes\string".eps}
+\includegraphics[scale=0.5]{\string"Rotating_Rayleigh_Regimes\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -273,7 +277,7 @@ Regimes}
 \protect\caption{Grashof Evolution: Static Case}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Grashof\string".eps}
+\includegraphics[scale=0.5]{\string"Static_Grashof\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -282,14 +286,14 @@ Regimes}
 \protect\caption{Grashof Evolution: Static Case Highlighted Turbulent Regime}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Grashof_Regime\string".eps}
+\includegraphics[scale=0.5]{\string"Static_Grashof_Regime\string".png}
 
 \end{figure}
 \begin{figure}[H]
 \protect\caption{Grashof Evolution: Rotating Case}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Grashof_Regimes\string".eps}
+\includegraphics[scale=0.5]{\string"Rotating_Grashof_Regimes\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -299,7 +303,7 @@ Regimes}
 Regimes}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Grashof_Regimes\string".eps}
+\includegraphics[scale=0.5]{\string"Rotating_Grashof_Regimes\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -309,7 +313,7 @@ Regimes}
 of the Vessel)}
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Cell_Numbers\string".eps}
+\includegraphics[scale=0.5]{\string"Cell_Numbers\string".png}
 
 \end{figure}
 \begin{figure}[H]
@@ -318,7 +322,7 @@ of the Vessel)}
 
 \subfloat[Simulated Results via COMSOL]{
 
-\includegraphics[scale=0.4]{\string"Final Project/COMSOL\string".eps}}
+\includegraphics[scale=0.4]{\string"COMSOL\string".JPG}}
 \end{figure}
 \begin{figure}[H]
 \protect\caption{Comparison of Simulated and Experimental Temperature Evolution}
@@ -328,7 +332,7 @@ of the Vessel)}
 
 
 
-\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Simulation Comparison\string".eps}
+\includegraphics[scale=0.5]{\string"Simulation Comparison\string".png}
 
 }
 
@@ -461,5 +465,15 @@ Cambridge University Press, 2013. Print
 \item Prinn, R.G., Barshay, S.S. ``Carbon Monoxide on Jupiter and Implications
 for Atmospheric Convection.'' \textit{AAAS} 198.4321 (1977): 1031-1034.
 Print\end{enumerate}
+
+\pagebreak
+
+\begin{appendices}
+\section{Code and Data Processing Scripts} \label{app:code}
+\rawcode{processdata.py}{Script:}
+\rawcode{radialfft.py}{Module:}
+\rawcode{voronoi.py}{Module:}
+
+\end{appendices}
 
 \end{document}
