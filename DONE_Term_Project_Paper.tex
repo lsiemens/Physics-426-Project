@@ -1,0 +1,465 @@
+%% LyX 2.1.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{hyperref}
+
+\@ifundefined{showcaptionsetup}{}{%
+ \PassOptionsToPackage{caption=false}{subfig}}
+\usepackage{subfig}
+\makeatother
+
+\begin{document}
+
+\title{Observation and Characterization of Convection Under Static \& Rotating
+Conditions and the Possible Implications to the Jovian Atmosphere}
+
+
+\author{Luke Siemens \& Stephanie Monty}
+
+\maketitle
+
+\section{Introduction}
+
+Current models of Jupiter's atmosphere suggest the possibility of
+convection occurring deep within the planet's atmosphere. As early
+as 1977 Prinn \& Barshay suggest that the presence of convection within
+the atmosphere at 1100K would explain the appearance of carbon monoxide
+within the upper atmosphere, as observed in 1977 (Beer \& Taylor,
+1978). More recently with observations from the Galileo mission to
+Jupiter, convection was inferred from the direct observation of long
+lived storms on the planet, appearing as ``zonal jets'' or ``long-lived
+ovals'' (Ingersoll et al., 2000). The appearance and longevity of
+the storms suggests an energy source within the planet and the transfer
+of energy from said source to the atmosphere via convection (Ingersoll
+et al., 2000). 
+
+Further support for the presence of convection within the planet can
+be found in measuring the effective and equilibrium temperature of
+Jupiter. The equilibrium temperature may be found from equating the
+incoming solar radiation to the outgoing reradiated solar energy,
+while the effective temperature may be found through fitting a black
+body spectrum to the integrated flux over all frequencies coming from
+the body (Lissauer \& de Pater, 2013). The effective temperature for
+Jupiter was measured by the Voyager spacecraft to be $T_{eff}=124.4$K
+(Hamel et al., 1981), while the equilibrium temperature can be calculated
+to be $T_{eq}=110$K (Mihos, 2005). This discrepency in predicted
+and measured temperature alludes to the presence of an internal heat
+source within the Jupiter. The emission of this additional energy
+from the planet again supports the need for convection in order to
+transport the heat from within the planet to it's surface. 
+
+Of interest as well in the Jovian atmosphere is the effect of rotation
+on the theorized convection. Jupiter is a rapidly rotating planet
+with a rotation rate of approximately 9h 55m (Helled et al., 2009).
+This is inferred from the zonal winds in the upper atmosphere, which
+can reach \textasciitilde{}100m/s (Helled et al., 2009). Rotation
+clearly then has an effect on the motion of Jupiter's atmosphere.
+The effect of the rotation could be the introduction of turbulence
+which may impact the formation of convection cells and efficiency
+of heat transfer via convection. 
+
+With convection being a probable process occurring within the planet,
+an attempt to study and become more familiar with the mechanisms associated
+with convection in an Earth-based laboratory could yield important
+results. An experiment was performed in order to observe and characterize
+convection cells on laboratory scales. This included a study into
+the generation and characterization of convection under both static
+and rotational conditions. The results of this ``table top'' convection
+experiment will be discussed in an attempt to relate any findings
+to the larger scale of the Jovian interior and atmosphere.
+
+
+\section{Theory}
+
+The most accessible form of convection to study, characterize and
+observe in a laboratory setting, is Rayleigh-Benard (RB) convection.
+RB convection is a buoyancy-driven convection which occurs when a
+fluid is heated from below and cooled from above. Henri Benard first
+observed the creation of hexagonal squares on the surface of a fluid
+heated from below in 1900, while Lord Rayleigh derived the theoretical
+requirement for the creation of convection within a layer of fluid
+``bounded'' by two free surfaces later, in 1916 (Kundu et al.,2012).
+Rayleigh later determined the relationship between that know bears
+his name, in the form of the dimensionless Rayleigh number (Ra). The
+Rayleigh number may be defined in terms of the following, and expressed
+in the following formula:\begin{enumerate}
+	\item $\alpha$ = thermal diffusivity
+	\item $\beta$ = coefficient of thermal expansion
+	\item $\rho$ = density 
+	\item $\mu$ = dynamic viscosity
+	\item \textit{l} = height of the vessel
+	\item \textit{g} = acceleration due to gravity
+	\item $\Delta T$ = difference in temperature 
+\end{enumerate}
+\begin{equation}
+R_{a}=\frac{g\beta}{\mu\alpha}\rho(T_{b}-T_{u})l^{3}
+\end{equation}
+
+
+The critical Rayleigh number, $R_{c}$, represents the value of the
+Rayleigh number, representing the ratio of gravitational to viscous
+forces, at which convection occurs in the system. For the solved case,
+in which the bottom boundary is rigid, while the top is free, the
+case of this experiment, the critical Rayleigh number is \$Ra\_\{c\}=1101\$
+(Kundu et al.,2012). If a characteristic fluid is chosen such that
+all the parameters listed above are fixed, except for the temperature
+difference across the fluid, Ra may be deduced on various timescales.
+Though, the effect of rotation is not explicitly stated in the calculation
+of the Rayleigh number, if one infers the introduction of turbulence
+via rotation, and the effect of organization of the fluid flow upon
+reaching \$Ra\_\{c\}\$, one can imagine that perhaps convection occurs
+at higher Ra in the rotating case, than the non-rotating case. Thus,
+if the temperature difference across the fluid is measured at various
+times, the evolution of the Ra number may be studied and information
+gained as to the state of the system at said time intervals through
+observations of the fluid flow.
+
+Another useful dimensionless number is the Grashof number, a number
+that is contained within the definition of the Ra number. The Grashof
+number (Gr) reflects the ratio of buoyant to viscous forces (Shire,
+2011) and may be given by equation (2). Again, a study as to the evolution
+of the ratio of the two forces may be made through a calculation of
+Gr at various time steps. Again, the influence of rotation on the
+ratio between the two forces may also be inferred through a study
+of this type.
+
+\begin{equation}
+Gr=\frac{gl^{3}\beta\rho^{2}}{\mu^{2}}(T_{b}-T_{u})
+\end{equation}
+
+
+
+\section{Experimental Procedure}
+
+A rheoscopic fluid was first created using a mixture of tap water
+and fish scales, this was done at a ratio of 1g/200ml consistently
+throughout all experiments. In addition, \textasciitilde{}6 drops
+of toner fluid were used in order to enhance the effectiveness of
+the fluid at detecting bulk motions. In both the static and rotating
+case, 400ml of the mixture was placed in a vessel and then on top
+of an electronic hot plate. In both the static and rotational case
+a sugar mixture was also used to create a discrete density profile.
+In this case 100g of sugar was placed on the bottom of the vessel.
+Thermocouples were used in order to measure both the temperature of
+the fluid, and the temperature of the hot plate at various time steps.
+Over a period of \textasciitilde{}40minutes to an hour, measurements
+were made of the two temperatures and an image was taken to capture
+qualitative observations. This was done for both the static and rotational
+cases, in each case \textasciitilde{}10 data points were collected
+throughout the experiment. In addition to the procedure mentioned,
+during the rotating case the vessel was placed on a rotating table
+in which the frequency of rotation was varied from 0-26 RPMs. The
+characteristic values associated with the fluid, approximated as pure
+water, and vessel may be found below in Table 1.
+
+\begin{table}[H]
+
+
+\protect\caption{Characteristic Values Used Throughout}
+
+
+\begin{tabular}{cc}
+\toprule 
+Variable & Measured or Known Value (Kundu et al., 2012)\tabularnewline
+\midrule
+\midrule 
+$l$ height of vessel & 0.04m\tabularnewline
+\midrule 
+$\beta$ coefficient of thermal expansion & $2.1\times10^{-4}K^{-1}$\tabularnewline
+\midrule 
+\textgreek{a} thermal diffusivity & $1.49\times10^{-7}m^{2}/s$\tabularnewline
+\midrule 
+\textgreek{r} density & $998kg/m^{3}$\tabularnewline
+\midrule 
+\textgreek{m} dynamic viscosity & $1.002\times10^{-3}kg/ms$\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\section{Data \& Results}
+
+\begin{figure}[H]
+\protect\caption{Experimental Results}
+
+
+\subfloat[Rotational Convection]{
+
+\includegraphics[scale=0.5]{\string"Final Project/Rotational_Convection\string".eps}
+
+}\subfloat[Static Convection]{\includegraphics[scale=0.5]{\string"Final Project/Static_Convection\string".eps}
+
+}
+\end{figure}
+\begin{table}[H]
+
+
+\protect\caption{Rayleigh and Grashof Results}
+
+
+\begin{tabular}{ccc}
+\toprule 
+Case & Maximum Value of Gr & Maximum Value of Ra\tabularnewline
+\midrule
+\midrule 
+Static, No Sugar & $3.54\times10^{6}$ & $2.34\times10^{7}$\tabularnewline
+\midrule 
+Static, Sugar & $6.79\times10^{6}$ & $4.58\times10^{7}$\tabularnewline
+\midrule 
+Rotating, No Sugar & $4.95\times10^{6}$ & $3.34\times10^{7}$\tabularnewline
+\midrule 
+Rotating, Sugar & $8.13\times10^{6}$ & $5.48\times10^{7}$\tabularnewline
+\bottomrule
+\end{tabular}
+
+\end{table}
+\begin{figure}[H]
+
+
+\protect\caption{Rayleigh Evolution: Static Case}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Rayleigh\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+
+
+\protect\caption{Rayleigh Evolution: Static Case Highlighted Turbulent Regime}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Rayleigh_Regime\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+
+
+\protect\caption{Rayleigh Evolution: Rotating Case}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Rayleigh\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+\protect\caption{Rayleigh Evolution: Rotating Case Highlighted Turbulent and Boiling
+Regimes}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Rayleigh_Regimes\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+
+
+\protect\caption{Grashof Evolution: Static Case}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Grashof\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+
+
+\protect\caption{Grashof Evolution: Static Case Highlighted Turbulent Regime}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Static_Grashof_Regime\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+\protect\caption{Grashof Evolution: Rotating Case}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Grashof_Regimes\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+
+
+\protect\caption{Grashof Evolution: Rotating Case Highlighted Turbulent and Boiling
+Regimes}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Rotating_Grashof_Regimes\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+
+
+\protect\caption{Cell Size Study, Number of Cells of Each Size (Normalized to the Diameter
+of the Vessel)}
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Cell_Numbers\string".eps}
+
+\end{figure}
+\begin{figure}[H]
+\protect\caption{Comparison of Simulated and Experimental Temperature Evolution}
+
+
+\subfloat[Simulated Results via COMSOL]{
+
+\includegraphics[scale=0.4]{\string"Final Project/COMSOL\string".eps}}
+\end{figure}
+\begin{figure}[H]
+\protect\caption{Comparison of Simulated and Experimental Temperature Evolution}
+
+
+\subfloat[Experimental Results]{
+
+
+
+\includegraphics[scale=0.5]{\string"C:/Users/Stephanie/PycharmProjects/Astro 2016 Misc Programs/Simulation Comparison\string".eps}
+
+}
+
+\end{figure}
+
+
+
+\section{Discussion}
+
+The data collected in both the static and rotational case was processed
+in a variety of ways. Initially, upon examining the two images of
+the convection cells as seen above in both the rotating and static
+case, interesting comparisons may be made. In the case of the static
+convection, the cells are generally larger than those of the rotating
+case. Additionally, the rotating case displays some vorticity within
+the cells, visible as curled edges. Right away it can be seen that
+rotation has indeed introduced turbulence into the system. Analysis
+of the temperature difference across the fluid at various points was
+used to calculate both Ra and Gr at every time step and the maximum
+values for both numbers, in both cases may be found below in Table
+2. The plots of the evolution of each of these may also be found in
+the above section. Of note is the definite difference in the values
+of the Gr and thus Ra numbers at various times between the non-sugar
+and sugar case. The discrete density profile did lead to increased
+values of the Ra and Gr in both the rotational and static frames.
+This is attributed to the greater difference in temperature across
+the fluid. The sugar layer did appear to be efficient at insulating
+the bottom of the vessel, thus inhibiting the transmission of heat
+across the fluid. Though, it is not accurate obviously to assume a
+constant density for use in equation (1), as has been mentioned in
+the case of the sugar addition, one was assumed for simplicity in
+the calculations of the Ra and Gr numbers. This may have led to artificially
+high numbers in the case of the sugar addition, though the high temperature
+difference does remain. In all cases, the Ra numbers were well above
+$Ra_{c}$inferring the existence of convection, as was observed in
+all cases. Of interest was the observation that though convection
+was observed throughout the experiment in all cases, static and rotational,
+sugar and no-sugar, turbulance was observed at higher temperatures.
+Turbulence was observed most notably in the lower layers, often not
+permeating to the upper layers. In the case of the sugar addition,
+boiling was observed later on in the experiment. The regimes of turbulence
+and observed boiling are marked on the plots of Ra and Gr for both
+cases, as the green and pink regimes respectively. 
+
+A study was also made into the cell sizes associated with convection
+in both static and rotating cases. In the case of the static experiment,
+a final image was taken at the end of the experiment (40 minutes)
+from which the cell sizes associated with the static convection experiment
+were extracted. The average cell size was determined to be 14.70mm.
+A plot of the number of cells vs. size may be seen above. 
+
+ADD HERE FOURIER STUFF
+
+A study into simulating the experiment was also made via COMSOL. This
+was done using a 2D time-dependent fluid convection model. Water was
+chosen as the fluid and a heat flux of $3500W/m^{2}$was applied to
+one of the boundaries. The simulation was completed using a fine mesh,
+over 30 minutes, using intervals of 2 minutes. The resultant plot
+of temperature of both the top and bottem of the fluid may be seen
+above, where the top is given by the blue line and the bottom by the
+red. The experimental data for the case of the stationary vessel filled
+with rheoscopic fluid mixture (approximated as pure water) can be
+seen as well in the above section and may be compared against the
+experimental results. It can be said that the shapes of the two temperature
+profiles are in good agreement, though the values are in disagreement.
+
+ADD COMPUTATIONAL STUFF
+
+Sources of error within this experiment are numerous as this is only
+a preliminary study into the phenomenon of convection, in both static
+and rotational reference frames. The approximation of the continuous
+density profile used throughout the analysis is an obvious source
+of error as it propogates throughout all the calculations. In the
+case of this experiment is was deemed too difficult to measure the
+change in density profile at different time steps and thus a sacrifice
+in accuracy was made. The determination initial cell size was made
+by hand and thus itself introduced some errors, though a scale was
+set initially within the program via a pixel to physical scale conversion. 
+
+ADD ERRORS
+
+With respect to the observation and study of convection in a laboratory
+setting, the experiment may be deemed a success. Convection was observed
+fairly easily with the use of the rheoscopic fluid. Beyond that, convection
+was observed with only the slight introduction of a temperature difference
+across the fluid, owing to the low value of $Ra_{c}$. In the case
+of the discrete density profile, the addition of the sugar bottom,
+convection, through more turbulent overall, was still observed easily.
+This supports the idea that although convection is affected by the
+introduction of a discrete density profile, it is not hampered, this
+may be analogous to the heavier metallic hydrogen core in Jupiter.
+Additionally, rotation, though again introducing more turbulence and
+cell deformation, still does not hamper the convection within the
+material, this again could be analogous to the evidence of convection
+within Jupiter despite the rapid rotation of the planet. 
+
+
+\section{Conclusion}
+
+Table top convection was observed in both rotating and static reference
+frames. Turbulence was observed in both cases, but was much more prominant
+in the rotating case, visible most obviously as vorticity in the convection
+cell edges. In both kinematic cases, the discrete density profile
+led to larger values of Ra and Gr at each time step, though further
+investigation is needed to make concrete connections. A COMSOL simulation
+was used in 2D to simulate the evolution of the temperature across
+the fluid in time and is in good agreement with the experimental results.
+The average cell size was also determined via an image and conversion
+via a pixel/physical scale for the case of the static frame of reference,
+this was found to be 14.70mm. Though further experimentation will
+need to be made in order for strong connections between this modest
+experiment and the truth of the Jovian atmosphere, it can be said
+that rotation does not induce enough turbulence in the laboratory
+frame to hinder convection. 
+
+
+\section{References}
+\begin{enumerate}
+\item Bahrami, M. ``Natural Convection.'' \textit{Simon Fraser University}.
+Simon Fraser University, n.d. Web. 21 February 2016.
+\item Beer, R. \& Taylor, F. ``The Abundance of Carbon Monoxide in Jupiter.''
+\textit{ApJ} 221 (1978): 1100-1109. Print.
+\item Kundu, P.K, Cohen, I.M \& Dowling, D.R. \textit{Fluid Mechanics Fifth Edition}.
+Elsevier Inc., 2012. Print.
+\item Ingersoll, A.P. et al. ``Moist convection as an energy source for
+the large-scale motions in Jupiter's atmosphere.'' \textit{Nature}
+403 (2000): 630-633. Print.
+\item Lissaur, J. \& de Patar, I. \textit{Fundamentals of Planetary Science}.
+Cambridge University Press, 2013. Print
+\item Prinn, R.G., Barshay, S.S. ``Carbon Monoxide on Jupiter and Implications
+for Atmospheric Convection.'' \textit{AAAS} 198.4321 (1977): 1031-1034.
+Print\end{enumerate}
+
+\end{document}
