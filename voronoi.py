@@ -326,7 +326,8 @@ class voronoi:
 
         evaluated = []
         distances = []
-        for i in range(1, self.max_id + 1):
+        for i in self.neighbors.keys():
+#        for i in range(1, self.max_id + 1):
             for j in self.neighbors[i]:
                 a, b = i - 1, j - 1
                 if a > b:

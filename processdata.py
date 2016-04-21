@@ -36,6 +36,7 @@ image_data = [#("./data/CIMG2782.JPG", 1851, 1436, 1138, "r-", "heated water"),
 #image_data = image_data[:3]
 fig1, ax1 = pyplot.subplots()
 fig2, ax2 = pyplot.subplots()
+fig3, ax3 = pyplot.subplots()
 data_flats = [radial_fft(fname, x, y, r, r_clip=r_clip) for fname, x, y, r in image_flats]
 
 data = [radial_fft(fname, x, y, r, r_clip=r_clip) for fname, x, y, r, style, label in image_data]
@@ -45,11 +46,18 @@ for i, d in enumerate(data[:2]):
     style, label = image_data[i][4], image_data[i][5]
 #    d = radial_fft(fname, x, y, r, r_clip=r_clip)
     base = numpy.mean(numpy.array([data_flat.interpolate(d.x) for data_flat in data_flats]), axis=0)
+    ax1.plot(d.x, d.data_powerspectrum + 1*d.data_powerspectrum_err, style)
     ax1.plot(d.x, d.data_powerspectrum, style, label=label)
+    ax1.plot(d.x, d.data_powerspectrum - 1*d.data_powerspectrum_err, style)
     if label != "static fluid":
+        ax2.plot(1.0/d.x, (d.data_powerspectrum + 1*d.data_powerspectrum_err)/base, style)
         ax2.plot(1.0/d.x, d.data_powerspectrum/base, style, label=label)
+        ax2.plot(1.0/d.x, (d.data_powerspectrum - 1*d.data_powerspectrum_err)/base, style)
     else:
         ax2.plot(1.0/d.x, [1.0]*len(d.x), style, label=label)    
+    ax3.plot(1.0/d.x, d.data_powerspectrum + d.data_powerspectrum_err, style)
+    ax3.plot(1.0/d.x, d.data_powerspectrum - d.data_powerspectrum_err, style)
+    ax3.plot(1.0/d.x, d.data_powerspectrum, style, label=label)
 
 for i, d in enumerate([data[3]]):
     print("loaded " + str(i + 1) + " of " + str(len(image_data)) + ".")
@@ -57,15 +65,28 @@ for i, d in enumerate([data[3]]):
 #    d = radial_fft(fname, x, y, r, r_clip=r_clip)
     base = numpy.mean(numpy.array([data_flat.interpolate(d.x) for data_flat in data_flats]), axis=0)
     val = numpy.mean(numpy.array([f.interpolate(d.x) for f in data[2:]]), axis=0)
+    val_err = numpy.mean(numpy.array([f.interpolate_err(d.x) for f in data[2:]]), axis=0)
+#    ax1.plot(d.x, d.data_powerspectrum, style, label=label)
+    ax1.plot(d.x, d.data_powerspectrum + 1*d.data_powerspectrum_err, style, label=label)
     ax1.plot(d.x, d.data_powerspectrum, style, label=label)
+    ax1.plot(d.x, d.data_powerspectrum - 1*d.data_powerspectrum_err, style, label=label)
     if label != "static fluid":
+        ax2.plot(1.0/d.x, (val + val_err)/base, "r-")
+        ax2.plot(1.0/d.x, (val - val_err)/base, "r-")
         ax2.plot(1.0/d.x, val/base, "r-", label="Rotating system")
     else:
         ax2.plot(1.0/d.x, [1.0]*len(d.x), style, label=label)    
+    ax3.plot(1.0/d.x, val + val_err, "r-")
+    ax3.plot(1.0/d.x, val - val_err, "r-")
+    ax3.plot(1.0/d.x, val, "r-", label="Rotating system")
 ax1.legend()
 ax1.set_xlabel("$\\nu$")
 ax2.legend()
 ax2.set_xlabel("$\\frac{\\lambda}{r}$")
 ax2.set_ylabel("Normalized FFT radial profile")
+ax3.legend()
+ax3.set_xlabel("$\\frac{\\lambda}{r}$")
+ax3.set_ylabel("FFT radial profile")
 pyplot.show(fig1)
 pyplot.show(fig2)
+pyplot.show(fig3)

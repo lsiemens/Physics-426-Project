@@ -9,8 +9,11 @@ def radial_profile(data, center):
     r = numpy.sqrt((x - center[0])**2 + (y - center[1])**2)
     r = r.astype(numpy.int)
     value_bin = numpy.bincount(r.ravel(), data.ravel())
+    value_sqr_bin = numpy.bincount(r.ravel(), (data**2).ravel())
     num_bin = numpy.bincount(r.ravel())
-    return value_bin/num_bin
+#    print(value_bin, num_bin)
+#    return value_bin/num_bin
+    return value_bin/num_bin, numpy.sqrt(value_sqr_bin/num_bin - (value_bin/num_bin)**2)/numpy.sqrt(num_bin)
 
 class radial_fft:
     def __init__(self, fname, x, y, r, r_clip=1.0, r_ramp=5, r_size=1.0, max_input=255.0):
@@ -29,6 +32,7 @@ class radial_fft:
             self.raw_data = fname
         self.data = None
         self._interpolate_fft = None
+        self._interpolate_fft_err = None
         
         self.f_sampling = None
         
@@ -53,8 +57,10 @@ class radial_fft:
         luminance = luminance*mask
         #normalze
         mean = numpy.average(luminance, weights=mask)
-        luminance = luminance/mean - mask
-        luminance = luminance/numpy.max(numpy.abs(luminance))
+#        luminance = luminance/mean - mask
+#        luminance = luminance/numpy.max(numpy.abs(luminance))
+        luminance = luminance - mean*mask
+#        luminance = luminance/numpy.max(numpy.abs(luminance))
         luminance = luminance[self.y-r-int(self.r_ramp):self.y+r+int(self.r_ramp), self.x-r-int(self.r_ramp):self.x+r+int(self.r_ramp)]
         self.data = luminance
         
@@ -67,14 +73,18 @@ class radial_fft:
         self.f_min = 1.0/(2.0*self.r_size)
         
         powerspec = numpy.abs(fft)**2
-        self.data_powerspectrum = radial_profile(numpy.log10(powerspec), (powerspec.shape[0]/2, powerspec.shape[0]/2))
+        self.data_powerspectrum, self.data_powerspectrum_err = radial_profile(numpy.log10(powerspec), (powerspec.shape[0]/2, powerspec.shape[0]/2))
         
         self.x = numpy.linspace(self.f_min, len(self.data_powerspectrum)*self.f_min, len(self.data_powerspectrum))
 
         self._interpolate_fft = interpolate.UnivariateSpline(self.x, self.data_powerspectrum, s=0, k=2)
+        self._interpolate_fft_err = interpolate.UnivariateSpline(self.x, self.data_powerspectrum_err, s=0, k=2)
     
     def interpolate(self, x):
         return self._interpolate_fft(x)
+
+    def interpolate_err(self, x):
+        return self._interpolate_fft_err(x)
 
 """ 
 d = radial_fft("./data/CIMG2817.JPG", 1841, 1349, 1317)
